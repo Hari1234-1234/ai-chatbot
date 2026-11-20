@@ -21,7 +21,7 @@ const ChatWindow = ({ messages, loading }) => {
             <div className="assistant-message">
               <p>{message.content}</p>
 
-              {/* Text-to-Speech controls */}
+              {/* Text-to-Speech */}
               <div className="voice-controls">
                 <button
                   type="button"
