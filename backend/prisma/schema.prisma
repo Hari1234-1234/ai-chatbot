@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            Int                @id @default(autoincrement())
+  name          String
+  email         String             @unique
+  password      String
+  createdAt     DateTime           @default(now())
+  conversations ChatConversation[]
+  updatedAt     DateTime           @updatedAt
+  documents     Document[]
+}
+
+model Document {
+  id            Int                @id @default(autoincrement())
+  originalName  String
+  storedName    String             @unique
+  mimeType      String
+  fileSize      Int
+  extractedText String             @db.Text
+  conversations ChatConversation[]
+  userId        Int
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime        @default(now())
+  chunks    DocumentChunk[]
+
+  @@index([userId])
+}
+
+model DocumentChunk {
+  id         Int    @id @default(autoincrement())
+  content    String @db.Text
+  chunkIndex Int
+  documentId Int
+
+  document  Document                    @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  embedding Unsupported("vector(384)")?
+
+  createdAt DateTime @default(now())
+
+  @@unique([documentId, chunkIndex])
+  @@index([documentId])
+}
+
+model ChatConversation {
+  id         Int    @id @default(autoincrement())
+  title      String @default("New Chat")
+  userId     Int
+  documentId Int
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  messages ChatMessage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([documentId])
+}
+
+model ChatMessage {
+  id      Int    @id @default(autoincrement())
+  role    String
+  content String @db.Text
+  sources Json?
+
+  conversationId Int
+  conversation   ChatConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([conversationId])
+}

@@ -1,0 +1,357 @@
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #172033;
+  background: #f5f7ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: #f5f7ff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ==============================
+   AUTHENTICATION BACKGROUND
+============================== */
+
+.auth-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+
+  background:
+    radial-gradient(circle at 15% 20%, rgba(129, 140, 248, 0.25), transparent 35%),
+    radial-gradient(circle at 85% 80%, rgba(96, 165, 250, 0.25), transparent 35%),
+    linear-gradient(135deg, #eef2ff, #f8faff 50%, #eaf2ff);
+}
+
+/* ==============================
+   AUTH CARD
+============================== */
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 42px 38px;
+
+  background: #ffffff;
+  border: 1px solid #e8ecf5;
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(39, 55, 100, 0.09),
+    0 3px 10px rgba(39, 55, 100, 0.04);
+
+  animation: cardAppear 0.4s ease;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card h2 {
+  color: #172554;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: -0.8px;
+}
+
+.auth-card > p {
+  color: #7b8498;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* ==============================
+   FORM LABELS
+============================== */
+
+.auth-card label {
+  display: block;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+/* ==============================
+   INPUT FIELDS
+============================== */
+
+.auth-card input {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  margin-bottom: 22px;
+
+  color: #172033;
+  background: #fbfcff;
+
+  border: 1px solid #dce2ee;
+  border-radius: 9px;
+  outline: none;
+
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.auth-card input::placeholder {
+  color: #a0a8b8;
+}
+
+.auth-card input:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.10);
+}
+
+/* ==============================
+   AUTH BUTTON
+============================== */
+
+.auth-card button {
+  width: 100%;
+  height: 49px;
+  margin-top: 5px;
+  margin-bottom: 22px;
+
+  border: none;
+  border-radius: 9px;
+
+  color: #ffffff;
+  background: linear-gradient(110deg, #4f46e5, #6366f1);
+
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.22);
+  transition: all 0.2s ease;
+}
+
+.auth-card button:hover:not(:disabled) {
+  background: linear-gradient(110deg, #4338ca, #4f46e5);
+  transform: translateY(-1px);
+  box-shadow: 0 9px 20px rgba(79, 70, 229, 0.28);
+}
+
+.auth-card button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-card button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ==============================
+   AUTH LINKS
+============================== */
+
+.auth-card a {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-card a:hover {
+  color: #3730a3;
+  text-decoration: underline;
+}
+
+.auth-card p:last-child {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+/* ==============================
+   ERROR MESSAGE
+============================== */
+
+.auth-card .error {
+  padding: 12px 14px;
+  margin-bottom: 20px;
+
+  color: #b42318;
+  background: #fef3f2;
+
+  border: 1px solid #fecdca;
+  border-radius: 8px;
+
+  font-size: 13px;
+  text-align: left;
+}
+
+/* ==============================
+   DASHBOARD
+============================== */
+
+.dashboard {
+  min-height: 100vh;
+  background: #f5f7ff;
+}
+
+.dashboard-header {
+  min-height: 75px;
+  padding: 15px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e8ecf5;
+}
+
+.dashboard-header h2 {
+  color: #3730a3;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.dashboard-header button {
+  padding: 11px 22px;
+  color: #ffffff;
+  background: #4f46e5;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.dashboard-header button:hover {
+  background: #3730a3;
+}
+
+.dashboard-content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 55px 25px;
+}
+
+.dashboard-content h1 {
+  color: #172554;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.dashboard-content > p {
+  color: #7b8498;
+  margin-bottom: 35px;
+}
+
+.dashboard-card {
+  max-width: 700px;
+  padding: 26px;
+  margin-bottom: 22px;
+
+  background: #ffffff;
+  border: 1px solid #e8ecf5;
+  border-radius: 14px;
+
+  box-shadow: 0 5px 20px rgba(39, 55, 100, 0.04);
+}
+
+.dashboard-card h3 {
+  color: #27345b;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.dashboard-card p {
+  color: #667085;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 18px;
+  }
+
+  .auth-card {
+    padding: 32px 23px;
+    border-radius: 15px;
+  }
+
+  .auth-card h2 {
+    font-size: 24px;
+  }
+
+  .dashboard-content {
+    padding: 35px 18px;
+  }
+
+  .dashboard-content h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-header {
+    padding: 15px 18px;
+  }
+}
+.auth-logo {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+
+  color: white;
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  border-radius: 16px;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.auth-brand {
+  text-align: center;
+}
+
+.auth-brand p {
+  margin-bottom: 28px;
+}
